@@ -81,9 +81,9 @@ Examples
 
     <span ng-model="date1" datetime-picker>{{date1:date}}</span>
 
-    <input ng-model="date2" datetime-picker date-only>{{date2:date}}</span>
+    <span ng-model="date2" datetime-picker date-only>{{date2:date}}</span>
 
-    <input ng-model="date3" datetime-picker date-only future-only>{{date3:date}}</span>
+    <span ng-model="date3" datetime-picker date-only future-only>{{date3:date}}</span>
 
-    <input ng-model="date4" datetime-picker hour="23" minute='59'>{{date4:date}}</span>
+    <span ng-model="date4" datetime-picker hour="23" minute='59'>{{date4:date}}</span>
 
