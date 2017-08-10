@@ -40,7 +40,7 @@ In the contents of the span is the date value formatted however you with to form
 This is the messaging from the original project.  Note that I do NOT recommend using input tags, because you don't need to do any input.  If you use an input with this, you will see the long epoch value, and that is not user friendly.  Sue a span tag instead, and format the date for display in that.
 
 [DEMO](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
-[![Imgur](http://i.imgur.com/UJfYMN6.png?1)](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
+[![Imgur](https://raw.githubusercontent.com/agilepro/angularjs-datetime-picker/master/datetime.png)](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
 
 To Get Started
 --------------
