@@ -127,9 +127,9 @@
     '    <div class="adp-day" ng-show="mv.trailingDays.length < 7" ng-repeat="day in mv.trailingDays">{{::day}}</div>',
     '  </div>',
     '  <div class="adp-days" id="adp-time"> ',
-    '    <label class="timeLabel">Time:</label> <span class="timeValue">{{("0"+inputHour).slice(-2)}} : {{("0"+inputMinute).slice(-2)}}</span><br/>',
-    '    <label class="hourLabel">Hour:</label> <input class="hourInput" type="range" min="0" max="23" ng-model="inputHour" ng-change="updateNgModel()" />',
-    '    <label class="minutesLabel">Min:</label> <input class="minutesInput" type="range" min="0" max="59" ng-model="inputMinute"  ng-change="updateNgModel()"/> ',
+    '    <table><tr><td><span class="angularjs-datetime-label">Time:</span></td><td><span class="timeValue">{{("0"+inputHour).slice(-2)}} : {{("0"+inputMinute).slice(-2)}}</span></td></tr>',
+    '    <tr><td><span class="angularjs-datetime-label">Hour:</span></td><td><input class="hourInput" type="range" min="0" max="23" ng-model="inputHour" ng-change="updateNgModel()" /></td></tr>',
+    '    <tr><td><span class="angularjs-datetime-label">Min:</span></td><td><input class="minutesInput" type="range" min="0" max="59" ng-model="inputMinute"  ng-change="updateNgModel()"/></td></tr></table> ',
     '  </div> ',
     '</div>'].join("\n");
 
@@ -203,18 +203,9 @@
       scope.$applyAsync( function() {
         ctrl.triggerEl = angular.element(element[0].triggerEl);
         if (attrs.ngModel) { // need to parse date string
-          var dateStr = ''+ctrl.triggerEl.scope().$eval(attrs.ngModel);
-          if (dateStr) {
-            if (!dateStr.match(/[0-9]{2}:/)) {  // if no time is given, add 00:00:00 at the end
-              dateStr += " 00:00:00";
-            }
-            dateStr = dateStr.replace(/([0-9]{2}-[0-9]{2})-([0-9]{4})/,'$2-$1');      //mm-dd-yyyy to yyyy-mm-dd
-            dateStr = dateStr.replace(/([\/-][0-9]{2,4})\ ([0-9]{2}\:[0-9]{2}\:)/,'$1T$2'); //reformat for FF
-            dateStr = dateStr.replace(/EDT|EST|CDT|CST|MDT|PDT|PST|UT|GMT/g,''); //remove timezone
-            dateStr = dateStr.replace(/\s*\(\)\s*/,'');                          //remove timezone
-            dateStr = dateStr.replace(/[\-\+][0-9]{2}:?[0-9]{2}$/,'');           //remove timezone
-            dateStr += getTimezoneOffset(dateStr);
-            var d = new Date(dateStr);
+          var dateValInt = ctrl.triggerEl.scope().$eval(attrs.ngModel);
+          if (dateValInt) {
+            var d = new Date(dateValInt);
             scope.selectedDate = new Date(
               d.getFullYear(),
               d.getMonth(),
@@ -269,12 +260,15 @@
         );
         scope.selectedDay = scope.selectedDate.getDate();
         if (attrs.ngModel) {
-          //console.log('attrs.ngModel',attrs.ngModel);
+          console.log('attrs.ngModel',attrs.ngModel,"TYPE");
           var elScope = ctrl.triggerEl.scope(), dateValue;
-          if (elScope.$eval(attrs.ngModel) && elScope.$eval(attrs.ngModel).constructor.name === 'Date') {
-            dateValue = new Date(dateFilter(scope.selectedDate, dateFormat));
+          console.log("DATATYPP", typeof elScope.$eval(attrs.ngModel) === 'number')
+          if (true) {
+              dateValue = new Date(dateFilter(scope.selectedDate, dateFormat)).getTime();
+              console.log("setting the value to a number: ", dateValue);
           } else {
-            dateValue = dateFilter(scope.selectedDate, dateFormat);
+              dateValue = dateFilter(scope.selectedDate, dateFormat);
+              console.log("setting the value to a string: ", dateValue);
           }
           elScope.$eval(attrs.ngModel + '= date', {date: dateValue});
         }
@@ -310,11 +304,17 @@
       link: function(scope, element, attrs, ctrl) {
         // Attach validation watcher
         scope.$watch(attrs.ngModel, function(value) {
+          console.log("WATCH datatype number: ", typeof value === 'number')
           if( !value || value == '' ){
-            return;
+              return;
+          }
+          if (!typeof value === 'number') {
+              console.log("DATE-TIME picker only works on integer epoch values");
+              return;
           }
           // The value has already been cleaned by the above code
           var date = new Date(value);
+          console.log("DATETIME set to: ", date);
           ctrl.$setValidity('date', !date? false : true);
           var now = new Date();
           if( attrs.hasOwnProperty('futureOnly') ){

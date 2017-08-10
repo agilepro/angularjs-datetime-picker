@@ -2,11 +2,12 @@
   "name": "angularjs-datetime-picker",
   "main": "angularjs-datetime-picker.js",
   "version": "0.1.20",
-  "homepage": "https://github.com/kineticsocial/angularjs-datetime-picker",
+  "homepage": "https://github.com/agilepro/angularjs-datetime-picker",
   "authors": [
-    "Allen Kim <allen.kim@kineticsocial.com>"
+    "Allen Kim <allen.kim@kineticsocial.com>",
+    "Keith Swenson <kswenson@us.fujitsu.com>"
   ],
-  "description": "Datepicker/Datetime picker for your INPUT tag",
+  "description": "Datepicker/Datetime picker that acts like an input tag, and allows direct ediging of date epoch values that are in the MVC model coming from a JSON REST server api.",
   "keywords": [
     "Angular",
     "Javascript",

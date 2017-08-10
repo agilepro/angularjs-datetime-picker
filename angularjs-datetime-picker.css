@@ -1,9 +1,11 @@
 .angularjs-datetime-picker {
   color: #333;
   font: normal 14px sans-serif;
-  border: 1px solid #ddd;
+  border: 3px solid #AB37C8;
   display: inline-block;
-  background: #fff;
+  background: white;
+  box-shadow: 10px 10px 15px grey;
+  z-index: 2001;
 }
 .angularjs-datetime-picker > .adp-month {
   text-align: center;
@@ -57,10 +59,10 @@
   cursor: pointer;
 }
 .angularjs-datetime-picker > .adp-days > .adp-day.selected {
-  background: #e0e0e0;
+  background: #EFE8F2;
 }
 .angularjs-datetime-picker > .adp-days > .adp-day.selectable:hover {
-  background: #eee;
+  background: yellow;
 }
 .angularjs-datetime-picker > .adp-days:after {
   content: '';
@@ -70,5 +72,16 @@
 }
 
 .angularjs-datetime-picker input[type=range] {
-  width: 150px;
+  width: 140px;
+}
+.angularjs-datetime-label {
+  color: gray;
+  padding:5px;
+}
+
+.hourInput {
+  float:right;
+}
+.minutesInput {
+  float:right;
 }
