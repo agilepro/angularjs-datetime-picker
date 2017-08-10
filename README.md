@@ -3,7 +3,7 @@ Simple DateTime Picker For AngularJS
 
 No JQuery, No Bootstrap, Just AngularJS (ver. 1.3+)
 
-#Origin
+# Origins
 
 This is a pretty awesome date-time picker developed by [Gillardo](https://github.com/Gillardo/bootstrap-ui-datetime-picker) who deserves al the credit.  It is light.  It is compact on the screen.  And it allws the user to easily set both date and time conveniently without a lot of extra clicking through a lot of screens.
 
@@ -21,15 +21,23 @@ There are a few datetime, but they all generally expect the input and output to 
 
 This date-time picker seems to be in maintenance mode with no active changes nor active bug fixing.  Because of this, I felt it was expedient to simply fork the repository, and then change the way it works to read dates as epoch values, and writing back as epoch values. I don't ever anticipate needing any other format for communicating dates.  The original picker had some code to detect the type, and do the right thing, but this becomes convoluted, and it is tricky because if any of the JS code writes the wrong value in there, then that error get propogated.  Instead, I wants something that would detect and warn about this kind of problem quickly, so that coding errors are discovered quickly.
 
-So that is what is it, the original EXCELLENT working data-time picker, but modified to work directly on long epoch value, reading and writing those values directly to the JSON bojects that go to and from the server.
+No format is needed because the date/time is read as an epoch value which is universal across all languages and all timezones. 
 
-Below is the messaging from the original project.
+So that is what is it, the original EXCELLENT working data-time picker, but modified to work directly on long epoch value, reading and writing those values directly to the JSON objects that go to and from the server.
 
+# Usage
 
+On the form for display, use a span tag, which can be styled like a normal bootstrap form control.  You just need to add attrbutes for datetipe-picker and for ng-model to use.
 
+    <span datetime-picker ng-model="meeting.startTime" class="form-control" >
+        {{meeting.startTime|date:"dd-MMM-yyyy   '&nbsp; at &nbsp;'  HH:mm  '&nbsp;  GMT'Z"}}
+    </span> 
 
+In the contents of the span is the date value formatted however you with to format it.  Since the datetime picker does not display the datetime as a formatted value, nor does it convert either way, the datetime is not concerned with the format you use here. That is about as easy as it gets.
 
 # Original ReadME
+
+This is the messaging from the original project.
 
 [DEMO](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
 [![Imgur](http://i.imgur.com/UJfYMN6.png?1)](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
