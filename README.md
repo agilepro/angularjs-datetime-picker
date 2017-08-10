@@ -33,14 +33,16 @@ On the form for display, use a span tag, which can be styled like a normal boots
         {{meeting.startTime|date:"dd-MMM-yyyy   '&nbsp; at &nbsp;'  HH:mm  '&nbsp;  GMT'Z"}}
     </span> 
 
-In the contents of the span is the date value formatted however you with to format it.  Since the datetime picker does not display the datetime as a formatted value, nor does it convert either way, the datetime is not concerned with the format you use here. That is about as easy as it gets.
+In the contents of the span is the date value formatted however you with to format it.  Since the datetime picker does not display the datetime as a formatted value, nor does it convert either way, the datetime is not concerned with the format you use here. That is about as easy as it gets.  Looks like this:
+
+[![Imgur](https://raw.githubusercontent.com/agilepro/angularjs-datetime-picker/master/datetime.png)](https://rawgit.com/agilepro/angularjs-datetime-picker/master/index.html)
 
 # Original ReadME
 
 This is the messaging from the original project.  Note that I do NOT recommend using input tags, because you don't need to do any input.  If you use an input with this, you will see the long epoch value, and that is not user friendly.  Sue a span tag instead, and format the date for display in that.
 
 [DEMO](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
-[![Imgur](https://raw.githubusercontent.com/agilepro/angularjs-datetime-picker/master/datetime.png)](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
+
 
 To Get Started
 --------------
@@ -60,7 +62,7 @@ For Bower users,
 
 3. Use it
 
-        <input datetime-picker ng-model="model" />
+        <span datetime-picker ng-model="modeldate">{{modeldate}}</span>
 
 Attributes
 ------------
