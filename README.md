@@ -5,7 +5,7 @@ No JQuery, No Bootstrap, Just AngularJS (ver. 1.3+)
 
 # Origins
 
-This is a pretty awesome date-time picker developed by [Gillardo](https://github.com/Gillardo/bootstrap-ui-datetime-picker) who deserves al the credit.  It is light.  It is compact on the screen.  And it allws the user to easily set both date and time conveniently without a lot of extra clicking through a lot of screens.
+This is a pretty awesome date-time picker developed by [Gillardo](https://github.com/Gillardo/bootstrap-ui-datetime-picker) who deserves all the credit.  It is light.  It is compact on the screen.  And it allws the user to easily set both date and time conveniently without a lot of extra clicking through a lot of screens.
 
 But it wasn't working for me because Date() objects don't function in JSON, and string formatted dates have lots of problems not the least of which is timezone related.  Here is what I need:
 
@@ -37,7 +37,7 @@ In the contents of the span is the date value formatted however you with to form
 
 # Original ReadME
 
-This is the messaging from the original project.
+This is the messaging from the original project.  Note that I do NOT recommend using input tags, because you don't need to do any input.  If you use an input with this, you will see the long epoch value, and that is not user friendly.  Sue a span tag instead, and format the date for display in that.
 
 [DEMO](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
 [![Imgur](http://i.imgur.com/UJfYMN6.png?1)](https://rawgit.com/kineticsocial/angularjs-datetime-picker/master/index.html)
@@ -65,7 +65,7 @@ For Bower users,
 Attributes
 ------------
 
-  -  date-format: optional, date format e.g. 'yyyy-MM-dd'
+  -  date-format: not needed
   -  year: optional, year selected, e.g. 2015
   -  month: optional, month selected, e.g. 5
   -  day: optiona, day selected, e.g. 31
@@ -77,15 +77,11 @@ Attributes
 Examples
 --------
 
-    <input ng-model="date1" datetime-picker date-only />
+    <span ng-model="date1" datetime-picker>{{date1:date}}</span>
 
-    <input ng-model="date1" datetime-picker date-only future-only />
+    <input ng-model="date2" datetime-picker date-only>{{date2:date}}</span>
 
-    <input ng-model="date2" datetime-picker date-format="yyyy-MM-dd" date-only />
+    <input ng-model="date3" datetime-picker date-only future-only>{{date3:date}}</span>
 
-    <input ng-model="date3" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" />
-
-    <input ng-model="date4" datetime-picker hour="23" minute='59'/>
-
-    <input ng-model="date5" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" year="2014" month="12" day="31" />
+    <input ng-model="date4" datetime-picker hour="23" minute='59'>{{date4:date}}</span>
 
